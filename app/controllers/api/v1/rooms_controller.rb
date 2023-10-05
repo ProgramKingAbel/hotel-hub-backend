@@ -1,5 +1,5 @@
 class Api::V1::RoomsController < ApplicationController
-    def index
+  def index
     # Code to handle GET request to list rooms
   end
 
