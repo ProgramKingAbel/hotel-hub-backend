@@ -1,6 +1,8 @@
 class Api::V1::RoomsController < ApplicationController
   def index
     # Code to handle GET request to list rooms
+    rooms = Room.all
+    render json: rooms
   end
 
   def create
