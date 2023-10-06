@@ -36,7 +36,6 @@ class Api::V1::ReservationsController < ApplicationController
 
   def destroy
     # Code to handle DELETE request to delete a reservation
-  
       @reservation = Reservation.find_by(id: params[:id])
       if @reservation
         if @reservation.destroy
