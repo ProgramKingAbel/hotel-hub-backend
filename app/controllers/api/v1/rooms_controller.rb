@@ -11,6 +11,8 @@ class Api::V1::RoomsController < ApplicationController
 
   def show
     # Code to handle GET request to retrieve a specific room
+    @room = Room.find(params[:id])
+    render json: @room
   end
 
   def update
