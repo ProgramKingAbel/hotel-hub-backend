@@ -25,9 +25,6 @@ default: &default
 development:
   <<: *default
   database: hotel_hub_backend_development
-  username: postgres
-  password: admins
-  host: localhost
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -62,8 +59,6 @@ development:
 test:
   <<: *default
   database: hotel_hub_backend_test
-  username: postgres
-  password: admins
   
 
 # As with config/credentials.yml, you never want to store sensitive information,
