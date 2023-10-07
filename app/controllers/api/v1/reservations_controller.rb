@@ -1,10 +1,27 @@
 class Api::V1::ReservationsController < ApplicationController
   def index
-    # Code to handle GET request to list reservations
-    reservation = Reservation.all
+    @reservations = Reservation.all
+    render json: @reservations
+  end
+
+  def create
+    @reservation = Reservation.new(reservation_params)
+
+    if @reservation.save
+      render json: { status: 'Success', message: 'Reservation created successfully' }, status: :created
+    else
+      puts @reservation.errors.full_messages
+      render json: { error: "Unable to create reservation. #{@reservation.errors.full_messages}" },
+             status: :unprocessable_entity
+    end
+  end
+
+  def show
+    reservation = Reservation.find(params[:id])
     render json: reservation
   end
 
+<<<<<<< HEAD
   def create
     # Code to handle POST request to create a reservation
     @reservation = Reservation.new(reservation_params)
@@ -34,6 +51,18 @@ class Api::V1::ReservationsController < ApplicationController
 
   def destroy
     # Code to handle DELETE request to delete a reservation
+=======
+  def update
+    @reservation = Reservation.find(params[:id])
+    if @reservation.update(reservation_params)
+      render json: @reservation
+    else
+      render json: @reservation.errors.full_messages, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+>>>>>>> a9889d5daf993031a2c7542c63467fd025fb863e
     @reservation = Reservation.find_by(id: params[:id])
     if @reservation
       if @reservation.destroy
@@ -46,7 +75,10 @@ class Api::V1::ReservationsController < ApplicationController
     end
   end
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a9889d5daf993031a2c7542c63467fd025fb863e
   private
 
   def reservation_params
