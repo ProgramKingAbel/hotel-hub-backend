@@ -3,6 +3,7 @@
 class Api::V1::Auth::SessionsController < DeviseTokenAuth::SessionsController
   before_action :ensure_params_exist, only: :create
 
+  # POST http://127.0.0.1:3000/api/v1/auth/sign_in
   def create
     super do |resource|
       if resource.persisted?
