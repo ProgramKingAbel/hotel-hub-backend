@@ -1,23 +1,7 @@
 class Api::V1::ReservationsController < ApplicationController
   def index
-    @reservations = Reservation.all
-    render json: @reservations
-  end
-
-  def create
-    @reservation = Reservation.new(reservation_params)
-
-    if @reservation.save
-      render json: { status: 'Success', message: 'Reservation created successfully' }, status: :created
-    else
-      puts @reservation.errors.full_messages
-      render json: { error: "Unable to create reservation. #{@reservation.errors.full_messages}" },
-             status: :unprocessable_entity
-    end
-  end
-
-  def show
-    reservation = Reservation.find(params[:id])
+    # Code to handle GET request to list reservations
+    reservation = Reservation.all
     render json: reservation
   end
 
@@ -61,6 +45,7 @@ class Api::V1::ReservationsController < ApplicationController
       render json: { error: 'Reservation not found.' }, status: :not_found
     end
   end
+
 
   private
 

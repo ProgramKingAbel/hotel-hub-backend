@@ -2,15 +2,8 @@ class Reservation < ApplicationRecord
   belongs_to :user
   belongs_to :room
 
-<<<<<<< HEAD
   validates :check_in, :check_out, presence: true
   validates :user_id, :room_id, presence: true
-=======
-  validates :user_id, :room_id, :check_in, :check_out, presence: true
-  validate :no_reservation_overlap
-  validate :check_in_must_be_before_check_out
-  validate :check_in_and_check_out_are_in_the_future
->>>>>>> a9889d5daf993031a2c7542c63467fd025fb863e
 
   def check_in_must_be_before_check_out
     return unless check_in.present? && check_out.present? && check_in >= check_out
