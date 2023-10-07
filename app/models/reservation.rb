@@ -26,4 +26,3 @@ class Reservation < ApplicationRecord
     errors.add(:base, 'Reservations must be for future dates.')
   end
 end
-
