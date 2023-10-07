@@ -17,6 +17,11 @@ class Api::V1::ReservationsController < ApplicationController
         render json: { error: 'Unable to create reservation.' }, status: :unprocessable_entity
       end
     end
-   
 
- 
+    def show
+      # Code to handle GET request to retrieve a specific reservation
+      reservation = Reservation.find(params[:id])
+      render json: reservation
+    end
+  
+    
