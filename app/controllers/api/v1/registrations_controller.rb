@@ -1,6 +1,7 @@
 class Api::V1::RegistrationsController < Devise::RegistrationsController
   respond_to :json
 
+  # POST http://127.0.0.1:3000/api/v1/users
   def create
     @user = User.new(user_params)
 
