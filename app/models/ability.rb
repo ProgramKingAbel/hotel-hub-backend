@@ -4,7 +4,8 @@ class Ability
   def initialize(user)
     return unless user.present?
 
-    can :read, [Room, Reservation]
+    can :read, Room
+    can :manage, Reservation
 
     return unless user.role == 'admin'
 
