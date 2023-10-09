@@ -1,6 +1,8 @@
 class Api::V1::RoomsController < ApplicationController
+  # before_action :authenticate_user!, except: [:index, :show]
+  # before_action :authorize_admin!, only: [:destroy]
+
   def index
-    # Code to handle GET request to list rooms
     rooms = Room.all
     render json: rooms
   end
@@ -18,6 +20,21 @@ class Api::V1::RoomsController < ApplicationController
   end
 
   def destroy
-    # Code to handle DELETE request to delete a room
+    room = Room.find(params[:id])
+    room.destroy
+    if room.destroy
+      render json: { message: "Room successfully deleted" }, status: :ok
+    else
+      render json: { error: "Failed to delete room" }, status: :unprocessable_entity
+    end
+    head :no_content
+  end
+
+  private
+
+  def authorize_admin!
+    unless current_user && current_user.admin?
+      render json: { error: "Only admins can delete rooms" }, status: :unauthorized
+    end
   end
 end
