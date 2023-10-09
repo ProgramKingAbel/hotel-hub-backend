@@ -23,14 +23,25 @@ class Api::V1::ReservationsController < ApplicationController
     render json: reservation
   end
 
+  # def update
+  #   # Code to handle PUT/PATCH request to update a reservation
+  #   if @reservation.update(reservation_params)
+  #     render json: @reservation
+  #   else
+  #     render json: @reservation.errors, status: :unprocessable_entity
+  #   end
+  # end
+
   def update
-    # Code to handle PUT/PATCH request to update a reservation
+    @reservation = Reservation.find(params[:id]) # Find the reservation by id
+  
     if @reservation.update(reservation_params)
       render json: @reservation
     else
       render json: @reservation.errors, status: :unprocessable_entity
     end
   end
+  
 
   def destroy
     # Code to handle DELETE request to delete a reservation
