@@ -5,10 +5,13 @@ Rails.application.routes.draw do
       devise_for :users, controllers: {
         registrations: 'api/v1/registrations'
       }, skip: [:sessions]
+      
       resources :rooms
 
-      # Custom route for deleting rooms accessible only to admins
-      delete '/api/v1/rooms/:id', to: 'rooms#destroy', constraints: { id: /\d+/ }, as: 'admin_destroy_room'
+      # Custom routes for create, update, and delete accessible only to admins
+      post '/rooms', to: 'rooms#create', as: 'admin_create_room'
+      patch '/rooms/:id', to: 'rooms#update', constraints: { id: /\d+/ }, as: 'admin_update_room'
+      delete '/rooms/:id', to: 'rooms#destroy', constraints: { id: /\d+/ }, as: 'admin_destroy_room'
 
       resources :reservations
     end

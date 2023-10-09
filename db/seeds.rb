@@ -55,6 +55,14 @@ room4 = Room.create(
   room_type: 'Deluxe'
 )
 
+room5 = Room.create(
+  name: 'Deluxe Suite',
+  price: 200.00,
+  description: 'A luxurious deluxe suite with all amenities.',
+  image: 'deluxe_suite.jpg',
+  room_type: 'Deluxe'
+)
+
 # Create Reservations
 reservation1 = Reservation.create(
   check_in: DateTime.now + 1.day,
