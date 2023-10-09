@@ -25,6 +25,19 @@ RSpec.describe Api::V1::ReservationsController, type: :controller do
 
       end
     end
+
+    context 'with invalid params' do
+      it 'returns unprocessable_entity status' do
+        user = create(:user)
+        room = create(:room)
+        post :create, params: { reservation: reservation ={
+            check_in: '2023-10-10',
+            check_out: '2023-10-15',
+            user_id: user.id,
+            room_no: room.id,
+          } }
+        expect(response).to                     have_http_status(:unprocessable_entity)
+      end
     end
   end
 
