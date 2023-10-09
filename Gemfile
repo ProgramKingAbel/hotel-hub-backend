@@ -6,6 +6,7 @@ gem 'bootsnap', require: false
 gem 'cancancan', '~> 3.5'
 gem 'devise', '~> 4.9', '>= 4.9.2'
 gem 'devise_token_auth', '~> 1.2', '>= 1.2.2'
+gem 'jwt'
 gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'rack-cors'

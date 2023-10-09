@@ -1,5 +1,5 @@
 class Api::V1::RoomsController < ApplicationController
-  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_user!
   before_action :authorize_admin!, only: %i[destroy create update]
 
   def index
@@ -60,7 +60,6 @@ class Api::V1::RoomsController < ApplicationController
     render json: { error: 'Only admins can delete rooms' }, status: :unauthorized
   end
 
-  # Define strong parameters for room creation
   def room_params
     params.require(:room).permit(:name, :price, :description)
   end
