@@ -12,14 +12,7 @@ user1 = User.create(
   name: 'John Doe',
   email: 'john@example.com',
   password: 'password123',
-  role: 'Admin'
-)
-
-user2 = User.create(
-  name: 'Jane Smith',
-  email: 'jane@example.com',
-  password: 'password456',
-  role: 'User'
+  role: 'admin'
 )
 
 # Create Rooms
@@ -69,13 +62,6 @@ reservation1 = Reservation.create(
   check_out: DateTime.now + 4.days,
   user: user1,
   room: room1 
-)
-
-reservation2 = Reservation.create(
-  check_in: DateTime.now + 5.days,
-  check_out: DateTime.now + 7.days,
-  user: user2,
-  room: room2
 )
 
 
