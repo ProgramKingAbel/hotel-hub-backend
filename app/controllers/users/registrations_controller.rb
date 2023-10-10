@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Users::RegistrationsController < Devise::RegistrationsController
   respond_to :json
 
@@ -14,8 +12,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
     else
       render json: {
         status: { message: 'User could not be created successfully',
-                  errors: resource.errors.full_messages },
-        status: :unprocessable_entity
+                  errors: resource.errors.full_messages }
       }
     end
   end

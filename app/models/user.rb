@@ -10,8 +10,4 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { in: 3..25 }, uniqueness: true
   enum role: { user: 'user', admin: 'admin' }
-
-  def jwt_payload
-    super
-  end
 end
