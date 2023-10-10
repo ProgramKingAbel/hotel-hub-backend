@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::API
+  include Devise::Controllers::Helpers
+  include CanCan::ControllerAdditions
+
   before_action :update_allowed_parameters, if: :devise_controller?
 
   include DeviseTokenAuth::Concerns::SetUserByToken

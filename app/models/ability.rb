@@ -7,8 +7,9 @@ class Ability
     can :read, Room
     can :manage, Reservation
 
-    return unless user.role == 'admin'
+    return unless user.admin?
 
+    can :create, Room
     can :manage, :all
   end
 end
