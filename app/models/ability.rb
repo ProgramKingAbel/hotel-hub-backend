@@ -9,7 +9,6 @@ class Ability
 
     return unless user.admin?
 
-    can :create, Room
     can :manage, :all
   end
 end

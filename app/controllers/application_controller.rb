@@ -1,10 +1,10 @@
 class ApplicationController < ActionController::API
-  include Devise::Controllers::Helpers
-  include CanCan::ControllerAdditions
-
+  before_action :authenticate_user!
   before_action :update_allowed_parameters, if: :devise_controller?
 
-  include DeviseTokenAuth::Concerns::SetUserByToken
+  rescue_from CanCan::AccessDenied do |exception|
+    render json: { error: exception, status: 'authorization_failed' }
+  end
 
   protected
 

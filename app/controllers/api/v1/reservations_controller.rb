@@ -1,8 +1,8 @@
 class Api::V1::ReservationsController < ApplicationController
   def index
     # Code to handle GET request to list reservations
-    reservation = Reservation.all
-    render json: reservation
+    reservations = current_user.reservations
+    render json: reservations
   end
 
   def create
