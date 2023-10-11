@@ -4,10 +4,12 @@ class Users::SessionsController < Devise::SessionsController
   private
 
   def respond_with(resource, _options = {})
+  if resource.persisted?
     render json: {
-      status: { code: 200, message: 'User Signed in Successfully',
+      status: { code: 200, message: 'Signed in Successfully',
                 data: resource }
     }, status: :ok
+  end
   end
 
   def respond_to_on_destroy
