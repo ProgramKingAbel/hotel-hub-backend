@@ -1,13 +1,16 @@
 class Api::V1::ReservationsController < ApplicationController
-  def index
-    # Code to handle GET request to list reservations
+  def index     
     reservations = current_user.reservations
     render json: reservations
   end
 
   def create
-    # Code to handle POST request to create a reservation
-    @reservation = Reservation.new(reservation_params)
+    existing_reservation = current_user.reservations.find_by(reservation_params)
+    if existing_reservation
+          render json: {status: 'error', message: 'Reservation Already exists'}, status: :unprocessable_entity
+         else
+           
+    @reservation = current_user.reservations.new(reservation_params)
 
     if @reservation.save
       render json: { status: 'Success', message: 'Reservation created successfully' }, status: :created
@@ -15,6 +18,7 @@ class Api::V1::ReservationsController < ApplicationController
       puts @reservation.errors.full_messages
       render json: { error: 'Unable to create reservation.' }, status: :unprocessable_entity
     end
+  end
   end
 
   def show
@@ -49,6 +53,6 @@ class Api::V1::ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:check_in, :check_out, :room_id, :user_id)
+    params.require(:reservation).permit(:check_in, :check_out, :room_id)
   end
 end
