@@ -12,14 +12,14 @@ user1 = User.create(
   name: 'John Doe',
   email: 'john@example.com',
   password: 'password123',
-  role: 'Admin'
+  role: 'admin'
 )
 
 user2 = User.create(
   name: 'Jane Smith',
   email: 'jane@example.com',
   password: 'password456',
-  role: 'User'
+  role: 'user'
 )
 
 # Create Rooms
@@ -77,6 +77,5 @@ reservation2 = Reservation.create(
   user: user2,
   room: room2
 )
-
 
 puts 'Seed data created successfully.'
