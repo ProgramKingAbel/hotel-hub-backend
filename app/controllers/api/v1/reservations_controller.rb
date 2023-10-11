@@ -40,9 +40,8 @@ class Api::V1::ReservationsController < ApplicationController
     }, status: :not_found
   end
 
-  def destroy
-    # Code to handle DELETE request to delete a reservation
-    @reservation = Reservation.find_by(id: params[:id])
+  def destroy   
+    @reservation = current_user.reservations.find_by(id: params[:id])
     if @reservation
       if @reservation.destroy
         render json: { message: 'Reservation deleted successfully.' }
