@@ -1,5 +1,5 @@
 class Api::V1::ReservationsController < ApplicationController
-  def index     
+  def index
     reservations = current_user.reservations
     render json: reservations
   end
@@ -7,40 +7,39 @@ class Api::V1::ReservationsController < ApplicationController
   def create
     existing_reservation = current_user.reservations.find_by(reservation_params)
     if existing_reservation
-          render json: {status: 'error', message: 'Reservation Already exists'}, status: :unprocessable_entity
-         else
-           
-    @reservation = current_user.reservations.new(reservation_params)
-
-    if @reservation.save
-      render json: { status: 'Success', message: 'Reservation created successfully' }, status: :created
+      render json: { status: 'error', message: 'Reservation Already exists' }, status: :unprocessable_entity
     else
-      puts @reservation.errors.full_messages
-      render json: { error: 'Unable to create reservation.' }, status: :unprocessable_entity
+
+      @reservation = current_user.reservations.new(reservation_params)
+
+      if @reservation.save
+        render json: { status: 'Success', message: 'Reservation created successfully' }, status: :created
+      else
+        puts @reservation.errors.full_messages
+        render json: { error: 'Unable to create reservation.' }, status: :unprocessable_entity
+      end
     end
   end
-  end
 
-  def show   
+  def show
     reservation = current_user.reservations.find(params[:id])
     render json: reservation
   end
 
   def update
-    @reservation = current_user.reservations.find(params[:id])   
+    @reservation = current_user.reservations.find(params[:id])
     if @reservation.update(reservation_params)
       render json: @reservation
     else
       render json: @reservation.errors, status: :unprocessable_entity
     end
-
   rescue ActiveRecord::RecordNotFOund
     render json: {
       error: 'Reservation Not found.'
     }, status: :not_found
   end
 
-  def destroy   
+  def destroy
     @reservation = current_user.reservations.find_by(id: params[:id])
     if @reservation
       if @reservation.destroy
