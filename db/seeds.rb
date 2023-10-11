@@ -78,5 +78,4 @@ reservation2 = Reservation.create(
   room: room2
 )
 
-
 puts 'Seed data created successfully.'
