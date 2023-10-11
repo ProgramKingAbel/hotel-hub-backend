@@ -24,6 +24,7 @@ default: &default
 development:
   <<: *default
   database: hotel_hub_backend_development
+  username: postgres
   password: admins
   host: localhost
    
@@ -61,6 +62,7 @@ development:
 test:
   <<: *default
   database: hotel_hub_backend_test 
+  username: postgres
   password: admins
 
   
