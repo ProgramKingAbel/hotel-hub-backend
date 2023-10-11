@@ -27,12 +27,17 @@ class Api::V1::ReservationsController < ApplicationController
   end
 
   def update
-    # Code to handle PUT/PATCH request to update a reservation
+    @reservation = current_user.reservations.find(params[:id])   
     if @reservation.update(reservation_params)
       render json: @reservation
     else
       render json: @reservation.errors, status: :unprocessable_entity
     end
+
+  rescue ActiveRecord::RecordNotFOund
+    render json: {
+      error: 'Reservation Not found.'
+    }, status: :not_found
   end
 
   def destroy
