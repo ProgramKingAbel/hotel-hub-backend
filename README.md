@@ -72,7 +72,6 @@ Link to the [Kanban Board](https://github.com/ProgramKingAbel/hotel-hub-backend/
 
 All 5 authors have been contributing to this project from start to finish.
 
- <p align="right">(<a href="#readme-top">back to top</a>)</p> -->
 
 <!-- GETTING STARTED -->
 
