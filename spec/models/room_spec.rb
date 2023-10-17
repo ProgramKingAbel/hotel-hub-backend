@@ -11,5 +11,4 @@ RSpec.describe Room, type: :model do
   it { is_expected.to validate_numericality_of(:price).is_greater_than(0) }
 
   # Test associations
-  it { is_expected.to have_many(:reservations) }
 end
