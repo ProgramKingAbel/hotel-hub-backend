@@ -5,7 +5,7 @@ RSpec.describe 'Api::V1::Rooms', type: :request do
 
   describe 'GET /api/v1/rooms' do
     it 'returns a JSON response with a list of rooms' do
-      get "/api/v1/rooms"
+      get '/api/v1/rooms'
       expect(response).to have_http_status(:ok)
     end
   end

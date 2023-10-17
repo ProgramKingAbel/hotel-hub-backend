@@ -11,9 +11,9 @@ describe User do
   end
 
   it 'should have a unique email address' do
-    user_1 = User.create(name: 'John Doe', email: 'john.doe@example.com')
-    user_2 = User.new(name: 'Jane Doe', email: 'john.doe@example.com')
+    User.create(name: 'John Doe', email: 'john.doe@example.com')
+    user2 = User.new(name: 'Jane Doe', email: 'john.doe@example.com')
 
-    expect(user_2).not_to be_valid
+    expect(user2).not_to be_valid
   end
 end
