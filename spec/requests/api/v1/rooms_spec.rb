@@ -58,13 +58,15 @@ RSpec.describe 'Api::V1::Rooms', type: :request do
     end
   end
 
-  # describe 'PUT /api/v1/rooms/:id' do
-  #   it 'return a JSON response of update a room' do
-  #     room = create(:room)
-  #     put "/api/v1/rooms/#{room.id}", params: { room: { name: 'New name' } }
-  #     expect(response).to have_http_status(:no_content)
-  #   end
-  # end
+  
+  
+  describe 'PUT /api/v1/rooms/:id' do
+    it 'return a JSON response of update a room' do
+      room = create(:room)
+      put "/api/v1/rooms/#{room.id}", params: { room: { name: 'New name' } }
+      expect(response).to have_http_status(:ok)
+    end
+  end
 
 
   # describe 'DELETE /api/v1/rooms/:id' do
