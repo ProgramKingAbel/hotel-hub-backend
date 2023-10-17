@@ -12,11 +12,13 @@ gem 'puma', '~> 5.0'
 gem 'rack-cors'
 gem 'rails', '~> 7.0.8'
 gem 'rubocop', '>= 1.0', '< 2.0'
+gem 'rswag'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails'
+  gem "rswag-specs"
 end
 
 group :development do
