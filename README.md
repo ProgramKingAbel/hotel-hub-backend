@@ -180,8 +180,8 @@ rspec spec
 
 ## 🔭 Future Features <a id="future-features"></a> 
  
-- **[Prevent room reservations if the same period is already booked]**
-- **[Add Dark Mode]**
+- **[Payment Integration into the System]**
+- **[Add email confirmation]**
  
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
