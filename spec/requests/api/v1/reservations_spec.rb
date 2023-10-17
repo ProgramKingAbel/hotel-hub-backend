@@ -89,6 +89,14 @@ RSpec.describe Api::V1::ReservationsController, type: :request do
     end
 
   end
-
+  describe 'DELETE #destroy' do
+  it 'destroys the reservation' do
+    sign_in user
+    reservation = create(:reservation, user: user) # Assuming you have a reservation factory
+    delete "/api/v1/reservations/#{reservation.id}"
+    expect(response).to have_http_status(:success)
+    expect(JSON.parse(response.body)['message']).to eq('Reservation deleted successfully.')
+  end
+end
 
 end
