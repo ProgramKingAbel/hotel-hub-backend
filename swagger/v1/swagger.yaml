@@ -1,0 +1,72 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/reservations":
+    get:
+      summary: Retrieves a list of reservations for current user
+      tags:
+      - Reservations
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of reservations retrieved
+    post:
+      summary: Creates a reservation
+      tags:
+      - Reservations
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Reservation created successfully
+        '422':
+          description: Validation errors
+  "/api/v1/reservations/{id}":
+    get:
+      summary: Retrieves a single reservation
+      tags:
+      - Reservations
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Reservation retrieved
+        '404':
+          description: Reservation not found
+    delete:
+      summary: Deletes a reservation
+      tags:
+      - Reservations
+      parameters:
+      - name: Authorization
+        in: header
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: Reservation deleted successfully
+        '404':
+          description: Reservation not found

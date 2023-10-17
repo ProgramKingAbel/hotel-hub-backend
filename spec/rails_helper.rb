@@ -1,5 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+require 'devise/jwt/test_helpers'
 ENV['RAILS_ENV'] ||= 'test'
 require_relative '../config/environment'
 # Prevent database truncation if the environment is production
@@ -63,4 +64,12 @@ RSpec.configure do |config|
 
   config.include FactoryBot::Syntax::Methods
   config.include Devise::Test::IntegrationHelpers, type: :request
+
+  config.include Devise::Test::IntegrationHelpers, type: :request
+  config.include Devise::JWT::TestHelpers, type: :request
+
+  config.before(:each, type: :request) do
+    @user = create(:user) # Assuming you have a factory for User
+    login_as(@user, scope: :user)
+  end
 end
