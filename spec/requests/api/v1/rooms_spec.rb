@@ -69,12 +69,12 @@ RSpec.describe 'Api::V1::Rooms', type: :request do
   end
 
 
-  # describe 'DELETE /api/v1/rooms/:id' do
-  #   it 'return a JSON response of delete a room' do
-  #     room = create(:room)
-  #     delete "/api/v1/rooms/#{room.id}"
-  #     expect(response).to have_http_status(:no_content)
-  #   end
-  # end
+  describe 'DELETE /api/v1/rooms/:id' do
+    it 'return a JSON response of delete a room' do
+      room = create(:room)
+      delete "/api/v1/rooms/#{room.id}"
+      expect(response).to have_http_status(:ok)
+    end
+  end
 
 end
