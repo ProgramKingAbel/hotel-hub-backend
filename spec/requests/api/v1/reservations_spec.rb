@@ -97,6 +97,12 @@ RSpec.describe Api::V1::ReservationsController, type: :request do
     expect(response).to have_http_status(:success)
     expect(JSON.parse(response.body)['message']).to eq('Reservation deleted successfully.')
   end
+  it 'returns not_found status for non-existing reservation' do
+    sign_in user
+    delete "/api/v1/reservations/999" # Assuming 999 is a non-existing reservation ID
+    expect(response).to have_http_status(:not_found)
+    expect(JSON.parse(response.body)['error']).to eq('Reservation not found.')
+  end
 end
 
 end
