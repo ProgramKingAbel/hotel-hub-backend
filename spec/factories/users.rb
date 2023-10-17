@@ -3,6 +3,7 @@ FactoryBot.define do
         sequence(:email) { |n| "user#{n}@example.com" }        
         password { 'password123' }
         sequence(:name) { |n| "User#{n}" }
-    end
+        role { 'admin' } # Add the role column here
+      end
   end
   
