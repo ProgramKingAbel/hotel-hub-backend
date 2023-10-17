@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Api::V1::Rooms', type: :request do
   let(:user) { create(:user) }
-  
+
   describe 'GET /api/v1/rooms' do
     it 'returns a JSON response with a list of rooms' do
       get "/api/v1/rooms"
@@ -58,8 +58,6 @@ RSpec.describe 'Api::V1::Rooms', type: :request do
     end
   end
 
-  
-  
   describe 'PUT /api/v1/rooms/:id' do
     it 'return a JSON response of update a room' do
       room = create(:room)
@@ -68,7 +66,6 @@ RSpec.describe 'Api::V1::Rooms', type: :request do
     end
   end
 
-
   describe 'DELETE /api/v1/rooms/:id' do
     it 'return a JSON response of delete a room' do
       room = create(:room)
@@ -76,5 +73,4 @@ RSpec.describe 'Api::V1::Rooms', type: :request do
       expect(response).to have_http_status(:ok)
     end
   end
-
 end

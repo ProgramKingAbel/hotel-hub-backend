@@ -96,12 +96,9 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
-# spec/rails_helper.rb or spec/spec_helper.rb
+  # spec/rails_helper.rb or spec/spec_helper.rb
 
-# Add these lines to include the matchers
+  # Add these lines to include the matchers
 
-
-# Include the matchers in your RSpec configuration
-
-
+  # Include the matchers in your RSpec configuration
 end

@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Api::V1::ReservationsController, type: :request do
   let(:user) { create(:user) } # Assuming you have a user factory
   let(:room) { create(:room) } # Assuming you have a room factory
-  let(:reservation) {create(:reservation)}
+  let(:reservation) { create(:reservation) }
 
   describe 'GET #index' do
     it 'returns a success response' do
@@ -34,7 +34,6 @@ RSpec.describe Api::V1::ReservationsController, type: :request do
         expect(JSON.parse(response.body)['status']).to eq('error')
       end
     end
-
   end
 
   describe 'GET #show' do
@@ -46,7 +45,7 @@ RSpec.describe Api::V1::ReservationsController, type: :request do
     end
   end
 
-    describe 'PUT #update' do
+  describe 'PUT #update' do
     context 'with valid parameters' do
       it 'updates the reservation' do
         sign_in user
@@ -87,22 +86,20 @@ RSpec.describe Api::V1::ReservationsController, type: :request do
         expect(reservation.check_out.to_date).not_to eq(Date.parse('2023-10-05'))
       end
     end
-
   end
   describe 'DELETE #destroy' do
-  it 'destroys the reservation' do
-    sign_in user
-    reservation = create(:reservation, user: user) # Assuming you have a reservation factory
-    delete "/api/v1/reservations/#{reservation.id}"
-    expect(response).to have_http_status(:success)
-    expect(JSON.parse(response.body)['message']).to eq('Reservation deleted successfully.')
+    it 'destroys the reservation' do
+      sign_in user
+      reservation = create(:reservation, user: user) # Assuming you have a reservation factory
+      delete "/api/v1/reservations/#{reservation.id}"
+      expect(response).to have_http_status(:success)
+      expect(JSON.parse(response.body)['message']).to eq('Reservation deleted successfully.')
+    end
+    it 'returns not_found status for non-existing reservation' do
+      sign_in user
+      delete "/api/v1/reservations/999" # Assuming 999 is a non-existing reservation ID
+      expect(response).to have_http_status(:not_found)
+      expect(JSON.parse(response.body)['error']).to eq('Reservation not found.')
+    end
   end
-  it 'returns not_found status for non-existing reservation' do
-    sign_in user
-    delete "/api/v1/reservations/999" # Assuming 999 is a non-existing reservation ID
-    expect(response).to have_http_status(:not_found)
-    expect(JSON.parse(response.body)['error']).to eq('Reservation not found.')
-  end
-end
-
 end
