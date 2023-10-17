@@ -66,6 +66,28 @@ RSpec.describe Api::V1::ReservationsController, type: :request do
         expect(reservation.room_id).to eq(room.id)
       end
     end
+    context 'with invalid parameters' do
+      it 'returns unprocessable_entity status' do
+        sign_in user
+        reservation = create(:reservation, user: user, room: room) # Assuming you have a reservation factory
+
+        put "/api/v1/reservations/#{reservation.id}", params: {
+          reservation: {
+            check_in: '2023-10-10',
+            check_out: '2023-10-05',
+            room_no: room.id
+          }
+        }
+
+        expect(response).to have_http_status(:unprocessable_entity)
+
+        # Reload the reservation from the database to ensure it hasn't been updated
+        reservation.reload
+        expect(reservation.check_in.to_date).not_to eq(Date.parse('2023-10-10'))
+        expect(reservation.check_out.to_date).not_to eq(Date.parse('2023-10-05'))
+      end
+    end
+
   end
 
 
