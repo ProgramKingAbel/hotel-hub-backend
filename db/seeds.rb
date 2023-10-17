@@ -12,14 +12,14 @@ user1 = User.create(
   name: 'John Doe',
   email: 'john@example.com',
   password: 'password123',
-  role: 'Admin'
+  role: 'admin'
 )
 
 user2 = User.create(
   name: 'Jane Smith',
   email: 'jane@example.com',
   password: 'password456',
-  role: 'User'
+  role: 'user'
 )
 
 # Create Rooms
@@ -32,6 +32,30 @@ room1 = Room.create(
 )
 
 room2 = Room.create(
+  name: 'Deluxe Suite',
+  price: 200.00,
+  description: 'A luxurious deluxe suite with all amenities.',
+  image: 'deluxe_suite.jpg',
+  room_type: 'Deluxe'
+)
+
+room3 = Room.create(
+  name: 'Deluxe Suite',
+  price: 200.00,
+  description: 'A luxurious deluxe suite with all amenities.',
+  image: 'deluxe_suite.jpg',
+  room_type: 'Deluxe'
+)
+
+room4 = Room.create(
+  name: 'Deluxe Suite',
+  price: 200.00,
+  description: 'A luxurious deluxe suite with all amenities.',
+  image: 'deluxe_suite.jpg',
+  room_type: 'Deluxe'
+)
+
+room5 = Room.create(
   name: 'Deluxe Suite',
   price: 200.00,
   description: 'A luxurious deluxe suite with all amenities.',
@@ -53,6 +77,5 @@ reservation2 = Reservation.create(
   user: user2,
   room: room2
 )
-
 
 puts 'Seed data created successfully.'

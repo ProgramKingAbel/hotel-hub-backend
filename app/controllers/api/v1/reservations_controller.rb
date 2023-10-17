@@ -1,25 +1,30 @@
 class Api::V1::ReservationsController < ApplicationController
   def index
-    # Code to handle GET request to list reservations
-    reservation = Reservation.all
-    render json: reservation
+    reservations = current_user.reservations.includes(:room)
+    render json: reservations, include: [:room]
   end
 
   def create
-    # Code to handle POST request to create a reservation
-    @reservation = Reservation.new(reservation_params)
-
-    if @reservation.save
-      render json: { status: 'Success', message: 'Reservation created successfully' }, status: :created
+    existing_reservation = current_user.reservations.find_by(reservation_params)
+    if existing_reservation
+      render json: { status: 'error', message: 'Reservation Already exists' }, status: :unprocessable_entity
     else
-      puts @reservation.errors.full_messages
-      render json: { error: 'Unable to create reservation.' }, status: :unprocessable_entity
+
+      @reservation = current_user.reservations.new(reservation_params)
+
+      if @reservation.save
+        render json: { status: 'Success', message: 'Reservation created successfully' }, status: :created
+      else
+        puts @reservation.errors.full_messages
+        render json: { status: 'error', message: @reservation.errors.full_messages.to_s,
+                       errors: @reservation.errors.full_messages },
+               status: :unprocessable_entity
+      end
     end
   end
 
   def show
-    # Code to handle GET request to retrieve a specific reservation
-    reservation = Reservation.find(params[:id])
+    reservation = current_user.reservations.find(params[:id])
     render json: reservation
   end
 
@@ -33,19 +38,21 @@ class Api::V1::ReservationsController < ApplicationController
   # end
 
   def update
-    @reservation = Reservation.find(params[:id]) # Find the reservation by id
-  
+    @reservation = current_user.reservations.find(params[:id])
     if @reservation.update(reservation_params)
       render json: @reservation
     else
       render json: @reservation.errors, status: :unprocessable_entity
     end
+  rescue ActiveRecord::RecordNotFOund
+    render json: {
+      error: 'Reservation Not found.'
+    }, status: :not_found
   end
   
 
   def destroy
-    # Code to handle DELETE request to delete a reservation
-    @reservation = Reservation.find_by(id: params[:id])
+    @reservation = current_user.reservations.find_by(id: params[:id])
     if @reservation
       if @reservation.destroy
         render json: { message: 'Reservation deleted successfully.' }
@@ -60,6 +67,6 @@ class Api::V1::ReservationsController < ApplicationController
   private
 
   def reservation_params
-    params.require(:reservation).permit(:check_in, :check_out, :room_id, :user_id)
+    params.require(:reservation).permit(:check_in, :check_out, :room_id)
   end
 end
