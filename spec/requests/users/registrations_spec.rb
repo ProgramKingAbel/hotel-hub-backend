@@ -1,7 +1,6 @@
 require 'swagger_helper'
 
 RSpec.describe 'users/registrations', type: :request do
-
   path '/users/' do
     post('create registration') do
       tags 'User Registrations'
@@ -16,16 +15,17 @@ RSpec.describe 'users/registrations', type: :request do
               name: { type: :string },
               email: { type: :string },
               password: { type: :string },
-              password_confirmation: { type: :string },
+              password_confirmation: { type: :string }
             },
             required: %w[name email password password_confirmation]
           }
         }
       }
-      
 
       response(200, 'successful') do
-        let(:user) { { name: 'testing1', email: 'test@example.com', password: 'password', password_confirmation: 'password' } }
+        let(:user) do
+          { name: 'testing1', email: 'test@example.com', password: 'password', password_confirmation: 'password' }
+        end
 
         run_test!
       end

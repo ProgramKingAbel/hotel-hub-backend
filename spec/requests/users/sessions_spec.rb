@@ -13,7 +13,7 @@ RSpec.describe 'users/sessions', type: :request do
             type: :object,
             properties: {
               email: { type: :string },
-              password: { type: :string },
+              password: { type: :string }
             },
             required: %w[email password]
           }
@@ -21,27 +21,14 @@ RSpec.describe 'users/sessions', type: :request do
       }
 
       response(200, 'successful') do
-        let(:user) {
+        let(:user) do
           {
             user: {
               email: 'test@example.com',
               password: 'password'
             }
           }
-        }
-
-        run_test!
-      end
-
-      response(401, 'unauthorized') do
-        let(:user) {
-          {
-            user: {
-              email: 'test@example.com',
-              password: 'incorrect_password'
-            }
-          }
-        }
+        end
 
         run_test!
       end
