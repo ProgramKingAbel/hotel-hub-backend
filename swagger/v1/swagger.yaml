@@ -38,12 +38,42 @@ paths:
   "/users/sign_in":
     post:
       summary: create session
+      tags:
+      - User Sessions
+      parameters: []
       responses:
         '200':
           description: successful
+        '401':
+          description: unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    password:
+                      type: string
+                  required:
+                  - email
+                  - password
   "/users/sign_out":
     delete:
-      summary: delete session
+      summary: destroy session
+      tags:
+      - User Sessions
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      description: Unauthorized sign-out request
       responses:
         '200':
           description: successful

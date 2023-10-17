@@ -21,7 +21,8 @@ RSpec.describe 'users/registrations', type: :request do
             required: %w[name email password password_confirmation]
           }
         }
-      }      
+      }
+      
 
       response(200, 'successful') do
         let(:user) { { name: 'testing1', email: 'test@example.com', password: 'password', password_confirmation: 'password' } }
