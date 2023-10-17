@@ -34,6 +34,16 @@ RSpec.describe Api::V1::ReservationsController, type: :request do
         expect(JSON.parse(response.body)['status']).to eq('error')
       end
     end
+
+  end
+
+  describe 'GET #show' do
+  it 'returns a success response' do
+    sign_in user
+    reservation = create(:reservation, user: user) # Create a reservation associated with the current user
+    get "/api/v1/reservations/#{reservation.id}"
+    expect(response).to have_http_status(:success)
+  end
   end
 
   
