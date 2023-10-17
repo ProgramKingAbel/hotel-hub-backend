@@ -38,13 +38,35 @@ RSpec.describe Api::V1::ReservationsController, type: :request do
   end
 
   describe 'GET #show' do
-  it 'returns a success response' do
-    sign_in user
-    reservation = create(:reservation, user: user) # Create a reservation associated with the current user
-    get "/api/v1/reservations/#{reservation.id}"
-    expect(response).to have_http_status(:success)
-  end
+    it 'returns a success response' do
+      sign_in user
+      reservation = create(:reservation, user: user) # Create a reservation associated with the current user
+      get "/api/v1/reservations/#{reservation.id}"
+      expect(response).to have_http_status(:success)
+    end
   end
 
-  
+    describe 'PUT #update' do
+    context 'with valid parameters' do
+      it 'updates the reservation' do
+        sign_in user
+        reservation = create(:reservation, user: user) # Assuming you have a reservation factory
+
+        put "/api/v1/reservations/#{reservation.id}", params: {
+          reservation: {
+            check_in: '2023-12-10',
+            check_out: '2024-1-17',
+            room_id: room.id
+          }
+        }
+        # Reload the reservation from the database to get the updated attributes
+        reservation.reload
+        expect(reservation.check_in.to_date).to eq(Date.parse('2023-12-10'))
+        expect(reservation.check_out.to_date).to eq(Date.parse('2024-1-17'))
+        expect(reservation.room_id).to eq(room.id)
+      end
+    end
+  end
+
+
 end
