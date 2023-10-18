@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'factory_bot'
 
 RSpec.describe Reservation, type: :model do
-  # Include FactoryBot methods
   include FactoryBot::Syntax::Methods
 
   describe '#no_reservation_overlap' do
