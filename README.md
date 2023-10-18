@@ -101,7 +101,7 @@ Clone this repository to your desired folder:
 Install this project with these commands:
 
 ```
-  cd hotel-hub
+  cd hotel-hub-backend
   bundle install
   rails db:create
   rails db:migrate
@@ -110,15 +110,38 @@ Install this project with these commands:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Usage
+### Database Setup.
 
+Before creating database, you have to configure the master key for your project. This can be done in two ways.
 
-### Install
- 
- ```cd hotel-hub-frontend
-    npm install
- ```
- <p align="right">(<a href="#readme-top">back to top</a>)</p>
+1. **Using our own master key that we have provided**
+cd into the project folder and in your terminal run
+
+``` 
+rails rake:secret
+
+```
+- This command will generate a master.key file and inside that file replace the key with the one shown below.
+
+**[f387ccf0b4eebd334dc8725a1cb9573]**
+
+- Proceed to creating db.
+
+2. **Generating your own master Key**
+
+- Remove config/master.key and config/credentials.yml.enc if they exist.
+- Run in the terminal: EDITOR=code rails credentials:edit 
+- Close the editor that opens.
+- This command will create a new master.key and credentials.yml.enc if they do not exist.
+
+- After this proceed to creating db with:
+```
+  rails db:create
+  rails db:migrate
+  rails db:seed
+  ```
+  
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Usage
  
@@ -133,14 +156,39 @@ or
 ```
 ./bin/dev
 ```
+
+- You can use the following emails and passwords from seeded data to login from the frontend.
+
+for admin
+```
+user1 = User.create(
+  name: 'John Doe',
+  email: 'john@example.com',
+  password: 'password123',
+  role: 'admin'
+)
+
+```
+for a Normal User
+
+```
+user2 = User.create(
+  name: 'Jane Smith',
+  email: 'jane@example.com',
+  password: 'password456',
+  role: 'user'
+)
+```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ###  Tests <a id="run-tests"></a>
 
-To run the tests, execute the following command:
+To run the tests for models and requests, execute the following command:
 
 ```
-rspec spec
+rspec ./spec/models
+rspec ./spec/requests/api/v1
+
 ```
  
 <p align="right">(<a href="#readme-top">back to top</a>)</p>

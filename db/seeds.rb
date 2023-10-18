@@ -27,7 +27,7 @@ room1 = Room.create(
   name: 'Standard Room',
   price: 100.00,
   description: 'A comfortable standard room with a view.',
-  image: 'standard_room.jpg',
+  image: 'https://res.cloudinary.com/tamstech-computer-repair-center/image/upload/v1697627644/pexels-pixabay-164595_djqqpq.jpg',
   room_type: 'Standard'
 )
 
@@ -35,7 +35,7 @@ room2 = Room.create(
   name: 'Deluxe Suite',
   price: 200.00,
   description: 'A luxurious deluxe suite with all amenities.',
-  image: 'deluxe_suite.jpg',
+  image: 'https://res.cloudinary.com/tamstech-computer-repair-center/image/upload/v1697627644/pexels-pixabay-164595_djqqpq.jpg',
   room_type: 'Deluxe'
 )
 
@@ -43,7 +43,7 @@ room3 = Room.create(
   name: 'Deluxe Suite',
   price: 200.00,
   description: 'A luxurious deluxe suite with all amenities.',
-  image: 'deluxe_suite.jpg',
+  image: 'https://res.cloudinary.com/tamstech-computer-repair-center/image/upload/v1697627644/pexels-pixabay-164595_djqqpq.jpg',
   room_type: 'Deluxe'
 )
 
@@ -51,7 +51,7 @@ room4 = Room.create(
   name: 'Deluxe Suite',
   price: 200.00,
   description: 'A luxurious deluxe suite with all amenities.',
-  image: 'deluxe_suite.jpg',
+  image: 'https://res.cloudinary.com/tamstech-computer-repair-center/image/upload/v1697627644/pexels-pixabay-164595_djqqpq.jpg',
   room_type: 'Deluxe'
 )
 
@@ -59,7 +59,7 @@ room5 = Room.create(
   name: 'Deluxe Suite',
   price: 200.00,
   description: 'A luxurious deluxe suite with all amenities.',
-  image: 'deluxe_suite.jpg',
+  image: 'https://res.cloudinary.com/tamstech-computer-repair-center/image/upload/v1697627644/pexels-pixabay-164595_djqqpq.jpg',
   room_type: 'Deluxe'
 )
 
