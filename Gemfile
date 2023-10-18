@@ -11,7 +11,7 @@ gem 'pg', '~> 1.1'
 gem 'puma', '~> 5.0'
 gem 'rack-cors'
 gem 'rails', '~> 7.0.8'
-gem 'rswag', '~> 2.11'
+gem 'rswag'
 gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
