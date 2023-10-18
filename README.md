@@ -111,7 +111,14 @@ Install this project with these commands:
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ### Usage
+   Remove config/master.key and config/credentials.yml.enc if they exist.
+2. Run in the terminal: EDITOR=code rails credentials:edit 
+3. Close the editor that opens.
+4. This command will create a new master.key and credentials.yml.enc if they do not exist.
 
+## Master-Key
+
+[68120c217045712684824133fc2cf359]
 
 ### Install
  
@@ -140,7 +147,9 @@ or
 To run the tests, execute the following command:
 
 ```
-rspec spec
+rspec ./spec/models
+rspec ./spec/requests/api/v1
+
 ```
  
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -151,7 +160,7 @@ rspec spec
 👤 **Abel Morara**
 - GitHub: [@githubhandle](https://github.com/ProgramKingAbel)
 - Twitter: [@twitterhandle](https://twitter.com/CeoAbel1)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/abel-morara/
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/abel-morara/)
  
 
 👤 **Alex Waweru**
