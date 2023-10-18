@@ -137,10 +137,12 @@ or
 
 ###  Tests <a id="run-tests"></a>
 
-To run the tests, execute the following command:
+To run the tests for models and requests, execute the following command:
 
 ```
-rspec spec
+rspec ./spec/models
+rspec ./spec/requests/api/v1
+
 ```
  
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
