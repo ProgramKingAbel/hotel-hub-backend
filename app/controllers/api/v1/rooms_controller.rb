@@ -32,9 +32,11 @@ class Api::V1::RoomsController < ApplicationController
 
   def destroy
     room = Room.find(params[:id])
-    room.destroy
-    render json: { message: 'Room successfully deleted' }, status: :ok
-  end
+    if room.destroy
+      render json: { message: 'Room successfully deleted' }, status: :ok
+    else
+      render json: { error: 'Failed to delete room', details: room.errors.full_messages }, status: :unprocessable_entity
+    end
 
   private
 
