@@ -4,69 +4,81 @@ info:
   title: API V1
   version: v1
 paths:
-  "/api/v1/reservations":
-    get:
-      summary: Retrieves a list of reservations for current user
-      tags:
-      - Reservations
-      parameters:
-      - name: Authorization
-        in: header
-        schema:
-          type: string
-      responses:
-        '200':
-          description: List of reservations retrieved
+  "/users/":
     post:
-      summary: Creates a reservation
+      summary: create registration
       tags:
-      - Reservations
-      parameters:
-      - name: Authorization
-        in: header
-        schema:
-          type: string
-      responses:
-        '201':
-          description: Reservation created successfully
-        '422':
-          description: Validation errors
-  "/api/v1/reservations/{id}":
-    get:
-      summary: Retrieves a single reservation
-      tags:
-      - Reservations
-      parameters:
-      - name: Authorization
-        in: header
-        schema:
-          type: string
-      - name: id
-        in: path
-        required: true
-        schema:
-          type: integer
+      - User Registrations
+      parameters: []
       responses:
         '200':
-          description: Reservation retrieved
-        '404':
-          description: Reservation not found
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    email:
+                      type: string
+                    password:
+                      type: string
+                    password_confirmation:
+                      type: string
+                  required:
+                  - name
+                  - email
+                  - password
+                  - password_confirmation
+  "/users/sign_in":
+    post:
+      summary: create session
+      tags:
+      - User Sessions
+      parameters: []
+      responses:
+        '200':
+          description: successful
+        '401':
+          description: unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    password:
+                      type: string
+                  required:
+                  - email
+                  - password
+  "/users/sign_out":
     delete:
-      summary: Deletes a reservation
+      summary: destroy session
       tags:
-      - Reservations
+      - User Sessions
       parameters:
       - name: Authorization
         in: header
-        schema:
-          type: string
-      - name: id
-        in: path
         required: true
         schema:
-          type: integer
+          type: string
+      description: Unauthorized sign-out request
       responses:
         '200':
-          description: Reservation deleted successfully
-        '404':
-          description: Reservation not found
+          description: successful
+servers:
+- url: http://127.0.0.1:3000/
+  variables:
+    defaultHost:
+      default: http://127.0.0.1:3000/

@@ -19,25 +19,17 @@ RSpec.configure do |config|
         title: 'API V1',
         version: 'v1'
       },
-      paths: {}
-      # servers: [
-      #   {
-      #     url: 'https://{defaultHost}',
-      #     variables: {
-      #       defaultHost: {
-      #         default: 'www.example.com'
-      #       }
-      #     }
-      #   }
-      # ],
-      # securityDefinitions: {
-      #   JWT: {
-      #     description: 'the jwt for API auth',
-      #     type: :apiKey,
-      #     name: :Authorization,
-      #     in: :header
-      #   }
-      # }
+      paths: {},
+      servers: [
+        {
+          url: 'http://127.0.0.1:3000/',
+          variables: {
+            defaultHost: {
+              default: 'http://127.0.0.1:3000/'
+            }
+          }
+        }
+      ]
     }
   }
 

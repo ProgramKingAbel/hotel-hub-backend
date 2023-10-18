@@ -18,6 +18,7 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'rspec-rails'
+  gem 'rswag-specs'
 end
 
 group :development do
@@ -42,5 +43,5 @@ end
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem "rack-cors"
-gem 'shoulda-matchers', require: false
 gem 'factory_bot_rails'
+gem 'shoulda-matchers', require: false

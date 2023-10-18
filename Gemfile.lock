@@ -295,7 +295,8 @@ DEPENDENCIES
   rack-cors
   rails (~> 7.0.8)
   rspec-rails
-  rswag (~> 2.11)
+  rswag
+  rswag-specs
   rubocop (>= 1.0, < 2.0)
   shoulda-matchers
   tzinfo-data

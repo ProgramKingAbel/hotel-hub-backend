@@ -28,15 +28,6 @@ class Api::V1::ReservationsController < ApplicationController
     render json: reservation
   end
 
-  # def update
-  #   # Code to handle PUT/PATCH request to update a reservation
-  #   if @reservation.update(reservation_params)
-  #     render json: @reservation
-  #   else
-  #     render json: @reservation.errors, status: :unprocessable_entity
-  #   end
-  # end
-
   def update
     @reservation = current_user.reservations.find(params[:id])
     if @reservation.update(reservation_params)
@@ -49,7 +40,6 @@ class Api::V1::ReservationsController < ApplicationController
       error: 'Reservation Not found.'
     }, status: :not_found
   end
-  
 
   def destroy
     @reservation = current_user.reservations.find_by(id: params[:id])
