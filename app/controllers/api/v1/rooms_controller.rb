@@ -37,6 +37,7 @@ class Api::V1::RoomsController < ApplicationController
     else
       render json: { error: 'Failed to delete room', details: room.errors.full_messages }, status: :unprocessable_entity
     end
+  end
 
   private
 
