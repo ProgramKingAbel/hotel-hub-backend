@@ -156,6 +156,29 @@ or
 ```
 ./bin/dev
 ```
+
+- You can use the following emails and passwords from seeded data to login from the frontend.
+
+for admin
+```
+user1 = User.create(
+  name: 'John Doe',
+  email: 'john@example.com',
+  password: 'password123',
+  role: 'admin'
+)
+
+```
+for a Normal User
+
+```
+user2 = User.create(
+  name: 'Jane Smith',
+  email: 'jane@example.com',
+  password: 'password456',
+  role: 'user'
+)
+```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ###  Tests <a id="run-tests"></a>
