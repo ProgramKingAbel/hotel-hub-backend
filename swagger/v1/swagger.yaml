@@ -1,0 +1,84 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/users/":
+    post:
+      summary: create registration
+      tags:
+      - User Registrations
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    email:
+                      type: string
+                    password:
+                      type: string
+                    password_confirmation:
+                      type: string
+                  required:
+                  - name
+                  - email
+                  - password
+                  - password_confirmation
+  "/users/sign_in":
+    post:
+      summary: create session
+      tags:
+      - User Sessions
+      parameters: []
+      responses:
+        '200':
+          description: successful
+        '401':
+          description: unauthorized
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                user:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    password:
+                      type: string
+                  required:
+                  - email
+                  - password
+  "/users/sign_out":
+    delete:
+      summary: destroy session
+      tags:
+      - User Sessions
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+      description: Unauthorized sign-out request
+      responses:
+        '200':
+          description: successful
+servers:
+- url: http://127.0.0.1:3000/
+  variables:
+    defaultHost:
+      default: http://127.0.0.1:3000/
