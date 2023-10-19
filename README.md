@@ -10,6 +10,7 @@
     - [Key Features](#key-features)
   - [🚀 Live Demo](#live-demo)
   - [🎬 Representation](#representation)
+  - [🧮 Kanban Board](#kanban-board)
 - [💻 Getting Started](#getting-started)
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
@@ -66,9 +67,11 @@ Live demo for the website [Coming Soon]().
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## 🎬 Kanban Board <a id="kanban"></a>
+## 🎬 Kanban Board <a id="kanban-board"></a>
 
 Link to the [Kanban Board](https://github.com/ProgramKingAbel/hotel-hub-backend/projects/1)
+
+[Link to initial state of Kanban Board](https://user-images.githubusercontent.com/33475814/272865206-0507a0bd-4dec-446c-b0c9-626e5c32c3f7.PNG)
 
 All 5 authors have been contributing to this project from start to finish.
 
