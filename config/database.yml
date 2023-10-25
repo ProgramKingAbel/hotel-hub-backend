@@ -84,5 +84,5 @@ test:
 #
 production:
   <<: *default
-  database: hotel_hub_backend_production
+  url: <%= ENV["DATABASE_URL"] %>
  
